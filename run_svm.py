@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets.samples_generator import make_blobs
+from sklearn.datasets.samples_generator import make_circles
 from sklearn.svm import SVC
 
 
@@ -24,16 +25,25 @@ def plot_decision_function(model):
 	ax.set_ylim(ylim)
 
 
-X, Y = make_blobs(n_samples=70, centers=2, random_state=0, cluster_std=0.7)
-plt.scatter(X[:,0],X[:,1],c=Y)
-plt.savefig('scatterplot.png')
+# X, Y = make_blobs(n_samples=70, centers=2, random_state=0, cluster_std=0.7)
+# plt.scatter(X[:,0],X[:,1],c=Y)
+# plt.savefig('scatterplot.png')
 
-svm_model = SVC(kernel='linear', C=1E10)
+# svm_model = SVC(kernel='linear', C=1E10)
+# svm_model.fit(X,Y)
+
+# plot_decision_function(svm_model)
+# plt.savefig('scatterplot_with_decision_function.png')
+
+X, Y = make_circles(200, factor=0.1, noise = 0.1)
+plt.scatter(X[:,0],X[:,1],c=Y)
+plt.savefig('scatterplot_circle.png')
+
+svm_model = SVC(kernel='rbf', C=1E5)
 svm_model.fit(X,Y)
 
 plot_decision_function(svm_model)
-plt.savefig('scatterplot_with_decision_function.png')
-
+plt.savefig('scatterplot_circle_with_decision_function.png')
 
 
 
