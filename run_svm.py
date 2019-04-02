@@ -35,16 +35,28 @@ def plot_decision_function(model):
 # plot_decision_function(svm_model)
 # plt.savefig('scatterplot_with_decision_function.png')
 
-X, Y = make_circles(200, factor=0.1, noise = 0.1)
-plt.scatter(X[:,0],X[:,1],c=Y)
-plt.savefig('scatterplot_circle.png')
 
-svm_model = SVC(kernel='rbf', C=1E5)
+
+# X, Y = make_circles(200, factor=0.1, noise = 0.1)
+# plt.scatter(X[:,0],X[:,1],c=Y)
+# plt.savefig('scatterplot_circle.png')
+
+# svm_model = SVC(kernel='rbf', C=1E5)
+# svm_model.fit(X,Y)
+
+# plot_decision_function(svm_model)
+# plt.savefig('scatterplot_circle_with_decision_function.png')
+
+
+X, Y = make_blobs(n_samples=150, centers=2, random_state=0, cluster_std=1.3)
+plt.scatter(X[:,0],X[:,1],c=Y)
+plt.savefig('scatterplot_messy.png')
+
+svm_model = SVC(kernel='linear', C=1E5)
 svm_model.fit(X,Y)
 
 plot_decision_function(svm_model)
-plt.savefig('scatterplot_circle_with_decision_function.png')
-
+plt.savefig('scatterplot_messy_with_decision_function.png')
 
 
 
